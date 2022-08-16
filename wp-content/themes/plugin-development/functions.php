@@ -176,3 +176,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Custom elementor widget.
+ */
+function wp_load_elementor_widget_func(){
+	if(did_action('elementor/loaded')){
+		require get_template_directory() . '/inc/elementor_posts_widget.php'; // get posts widget
+		require get_template_directory() . '/inc/elementor_wpcf7_widget.php'; // get wpcf7 widget
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new ElementorPostsWidget());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new ElementorWPCF7Widget());
+	}
+}
+add_action('init', 'wp_load_elementor_widget_func');
