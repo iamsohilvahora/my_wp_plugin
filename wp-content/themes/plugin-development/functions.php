@@ -188,3 +188,50 @@ function wp_load_elementor_widget_func(){
 	}
 }
 add_action('init', 'wp_load_elementor_widget_func');
+
+/**
+ * register cpt and taxonomy
+ */
+require get_template_directory(). '/inc/custom_posts_type.php';
+
+// Add the custom columns to the projects post type
+function set_custom_edit_projects_columns($columns){
+	$columns = array(
+		// 'cb' => $columns['cb'],
+		'title' => __('Title'),
+		'shortcode' => __('Shortcode'),
+		'taxonomy' => __('Taxonomy'),
+		'thumbnail' => __('Thumbnail'),
+		'author' => __('Author'),
+		'date' => __('Date'),
+	);
+    return $columns;
+}
+add_filter('manage_projects_posts_columns', 'set_custom_edit_projects_columns');
+
+// Add the data to the custom columns for the projects post type:
+function custom_projects_column($column, $post_id){
+    switch($column){
+        case 'taxonomy':
+            echo get_the_term_list($post_id , 'project-type' , '' , ' - ' , '' );
+            break;
+        case 'thumbnail':
+            echo get_the_post_thumbnail($post_id, array(32, 32)); 
+            break;
+        case 'shortcode':    
+            echo "[show-project id='{$post_id}' title='".get_the_title($post_id)."']"; 
+            break;
+    }
+}
+add_action('manage_projects_posts_custom_column', 'custom_projects_column', 10, 2);
+
+// add shortcode for display projects type
+function wp_show_peoject_type_func($atts){
+    $atts = shortcode_atts(
+        array(
+            'id' => '1',
+            'title' => 'default title',
+        ), $atts, 'show-project');
+    return 'id: '.esc_html($atts['id']).' - title: '.esc_html($atts['title']);
+}
+add_shortcode('show-project', 'wp_show_peoject_type_func');
