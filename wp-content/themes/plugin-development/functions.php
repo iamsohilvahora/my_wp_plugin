@@ -50,6 +50,7 @@ function plugin_development_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'plugin-development' ),
+			'menu-2' => esc_html__( 'Secondary - Menu for logged in users', 'plugin-development' ),
 		)
 	);
 
@@ -132,7 +133,7 @@ function plugin_development_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'plugin_development_widgets_init' );
+add_action('widgets_init', 'plugin_development_widgets_init');
 
 /**
  * Enqueue scripts and styles.
@@ -181,8 +182,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 function wp_load_elementor_widget_func(){
 	if(did_action('elementor/loaded')){
-		require get_template_directory() . '/inc/elementor_posts_widget.php'; // get posts widget
-		require get_template_directory() . '/inc/elementor_wpcf7_widget.php'; // get wpcf7 widget
+		require get_template_directory() . '/inc/elementor-posts-widget.php'; // get posts widget
+		require get_template_directory() . '/inc/elementor-wpcf7-widget.php'; // get wpcf7 widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new ElementorPostsWidget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new ElementorWPCF7Widget());
 	}
@@ -192,46 +193,24 @@ add_action('init', 'wp_load_elementor_widget_func');
 /**
  * register cpt and taxonomy
  */
-require get_template_directory(). '/inc/custom_posts_type.php';
+require get_template_directory(). '/inc/custom-post-type.php';
 
-// Add the custom columns to the projects post type
-function set_custom_edit_projects_columns($columns){
-	$columns = array(
-		// 'cb' => $columns['cb'],
-		'title' => __('Title'),
-		'shortcode' => __('Shortcode'),
-		'taxonomy' => __('Taxonomy'),
-		'thumbnail' => __('Thumbnail'),
-		'author' => __('Author'),
-		'date' => __('Date'),
-	);
-    return $columns;
-}
-add_filter('manage_projects_posts_columns', 'set_custom_edit_projects_columns');
+/**
+ * CPT column and make it sortable
+ */
+require get_template_directory(). '/inc/custom-sortable-posts-column.php';
 
-// Add the data to the custom columns for the projects post type:
-function custom_projects_column($column, $post_id){
-    switch($column){
-        case 'taxonomy':
-            echo get_the_term_list($post_id , 'project-type' , '' , ' - ' , '' );
-            break;
-        case 'thumbnail':
-            echo get_the_post_thumbnail($post_id, array(32, 32)); 
-            break;
-        case 'shortcode':    
-            echo "[show-project id='{$post_id}' title='".get_the_title($post_id)."']"; 
-            break;
-    }
-}
-add_action('manage_projects_posts_custom_column', 'custom_projects_column', 10, 2);
+/**
+ * register required and recommended plugin.
+ */
+require get_template_directory(). '/inc/required-plugins.php';
 
-// add shortcode for display projects type
-function wp_show_peoject_type_func($atts){
-    $atts = shortcode_atts(
-        array(
-            'id' => '1',
-            'title' => 'default title',
-        ), $atts, 'show-project');
-    return 'id: '.esc_html($atts['id']).' - title: '.esc_html($atts['title']);
-}
-add_shortcode('show-project', 'wp_show_peoject_type_func');
+/**
+ * customize navigation menu
+ */
+require get_template_directory(). '/inc/custom-navigation.php';
+
+/**
+ * customization of user
+ */
+require get_template_directory(). '/inc/custom-user.php';
