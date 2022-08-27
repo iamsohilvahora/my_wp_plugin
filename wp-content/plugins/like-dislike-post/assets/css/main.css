@@ -1,0 +1,38 @@
+/*
+* wp Like System CSS
+*/
+.wp-btn{
+    display: inline-block;
+    width: 46%;
+    padding: 20px;
+    font-size: 20px;
+    margin: 0 2%;
+    border: 1px solid #cccccc;
+    background: #f8f8f8;
+    text-align: center;
+    text-transform: uppercase;
+    color: #444444;
+    transition: 0.5s all;
+}
+.wp-btn:hover{
+    text-decoration: none;
+    color: inherit;
+}
+.wp-like-btn:hover{
+    background: #2d8f58;
+    color: #ffffff;
+}
+.wp-dislike-btn:hover{
+    background: #fc5a51;
+    color: #ffffff;
+}
+
+.wp-like-btn-click{
+    background: #2d8f58 !important;
+    color: #ffffff !important;
+}
+
+.wp-dislike-btn-click{
+    background: #fc5a51 !important;
+    color: #ffffff !important;
+}

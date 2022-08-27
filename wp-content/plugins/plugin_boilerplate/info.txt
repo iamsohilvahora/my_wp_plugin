@@ -1,0 +1,110 @@
+Boilerplate folder structure
+
+admin
+=============
+There are three directories contained within the admin directory, namely css, 
+js and partials. As its name suggests, all admin facing functionality should
+ be placed here. By default, the plugin-name-admin.js and plugin-name-admin.css
+ is enqueued to your wp-admin. class-plugin-name-admin.php will provide 
+ generic functionality where you can define your admin specific hooks.
+
+public
+==============
+This directory is pretty much similar to what the admin directory has to 
+offer, the only difference is that the public directory should be used to 
+store all of your public facing functionality codebase.
+
+languages
+==========
+A starting .pot file where you can provide translation functionality with 
+your plugin.
+
+includes
+=============
+This is probably where pretty much all the magic happens. There are five 
+starting classes included by default.
+
+LICENSE.txt
+==========
+A copy of GPL v2 license is included by default.
+
+README.txt
+============
+A starting point for your plugin README file. This file pretty covers all of 
+the sections that you can further fill in to provide a good plugin page on 
+WordPress plugin repository.
+
+plugin-name.php
+===============
+The point of entry for your plugin. In here, a general plugin file header is 
+included that you can modify to your own liking. The register_activation_hook 
+and register_deactivation_hook are also registered in this file if you ever 
+need to include some sort of functionality on plugin activation and/or 
+deactivation.
+
+Included Classes
+As mentioned before, there are five default classes provided inside the 
+/includes directory. Lets see what each of these do:
+
+class-plugin-name-activator.php
+=========================================
+This class is instantiated during the plugin activation. It only has one static 
+method, activate() which is registered to the register_activation_hook. 
+Use this class whenever you find yourself in need to do something on plugin 
+activation such as creating custom tables or saving default options.
+
+class-plugin-name-deactivator.php
+===================================
+The counterpart for class-plugin-name-deactivator.php. It also only contains
+ one static method, deactivate() which can be used to run any functionality 
+ during plugin deactivation. 
+
+class-plugin-name.php
+===========================
+The class that glues all the pieces together. It holds important information 
+about the plugin such as the plugin name and version. Plus, it will load
+the dependencies using the method load_dependencies() which will include
+all the above four classes and plugin text domain will be set using 
+set_locale() method. All admin and public hooks that were previously
+registered can also be defined here.
+
+ 
+FOLDER STRUCTURE
+==================================
+1. admin/
+      css/
+      js/
+      partials/
+      class-owt_boiler-admin.php
+   
+2. includes
+      class-owt_boiler.php
+      class-owt_boiler-activator.php
+      class-owt_boiler-deactivator.php
+      class-owt_boiler-i18n.php
+      class-owt_boiler-loader.php
+   
+3. languages
+      owt_bolier.pot
+   
+4. public
+      css/
+      js/
+      partials/
+      class-owt_boiler-public.php
+
+owt_boiler.php
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+Plugin execution:
+1)activator
+2)deactivator
+3)add menu page
+4)enqueue style and script for admin
+5)Add playlist data
+5)Show playlist data
+6)Delete playlist data
+7)Add php output buffer
+8)Create dynamic page on activate and delete in deactivate
+9)
