@@ -1,0 +1,10 @@
+2022-08-30T21:02:31+00:00 CRITICAL Cannot redeclare tt_render_list_page() (previously declared in D:\wamp64\www\my_wp_plugin\wp-content\plugins\custom-list-table-example\list-table-example.php:493) in D:\wamp64\www\my_wp_plugin\wp-content\plugins\product-discounts\admin\partials\product-discounts-admin-display.php on line 635
+
+2022-08-30T21:03:15+00:00 CRITICAL Cannot redeclare tt_add_menu_items() (previously declared in D:\wamp64\www\my_wp_plugin\wp-content\plugins\custom-list-table-example\list-table-example.php:477) in D:\wamp64\www\my_wp_plugin\wp-content\plugins\product-discounts\admin\partials\product-discounts-admin-display.php on line 619
+
+2022-08-30T21:04:01+00:00 CRITICAL Cannot declare class TT_Example_List_Table, because the name is already in use in D:\wamp64\www\my_wp_plugin\wp-content\plugins\product-discounts\admin\partials\product-discounts-admin-display.php on line 0
+
+2022-08-30T21:11:26+00:00 CRITICAL Cannot declare class TT_Example_List_Table, because the name is already in use in D:\wamp64\www\my_wp_plugin\wp-content\plugins\product-discounts\admin\partials\product-discounts-admin-display.php on line 0
+
+2022-08-30T21:14:41+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in D:\wamp64\www\my_wp_plugin\wp-content\plugins\product-discounts\admin\partials\product-discounts-admin-display.php on line 349
+

@@ -1,4 +1,4 @@
-/*! elementor - v3.7.1 - 14-08-2022 */
+/*! elementor - v3.7.2 - 21-08-2022 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["frontend"],{
 
 /***/ "../assets/dev/js/frontend/documents-manager.js":
@@ -321,7 +321,7 @@ class Frontend extends elementorModules.ViewModule {
     this.config.legacyMode = {
       get elementWrappers() {
         if (elementorFrontend.isEditMode()) {
-          elementorDevTools.deprecation.deprecated('elementorFrontend.config.legacyMode.elementWrappers', '3.1.0', 'elementorFrontend.config.experimentalFeatures.e_dom_optimization');
+          window.top.elementorDevTools.deprecation.deprecated('elementorFrontend.config.legacyMode.elementWrappers', '3.1.0', 'elementorFrontend.config.experimentalFeatures.e_dom_optimization');
         }
 
         return !elementorFrontend.config.experimentalFeatures.e_dom_optimization;

@@ -109,8 +109,8 @@ function wpac_show_like_count($content){
         $like_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE post_id = '$post_id' AND like_count = 1" );
         $like_count_result = "<center>This post has been liked <strong>".$like_count."</strong>, time(s)</center>";
         $content .= $like_count_result;
-        return $content;
     }
+    return $content;
 }
 add_filter('the_content', 'wpac_show_like_count');
 ?>

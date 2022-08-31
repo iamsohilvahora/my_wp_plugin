@@ -1,4 +1,4 @@
-/*! elementor - v3.7.1 - 14-08-2022 */
+/*! elementor - v3.7.2 - 21-08-2022 */
 .elementor-control-unit-1 {
   width: 27px;
 }
@@ -4517,7 +4517,6 @@ body:not(.elementor-device-desktop) body {
 }
 
 #elementor-preview {
-  overflow: auto;
   background-color: #333;
   height: 100%;
   border: 0;

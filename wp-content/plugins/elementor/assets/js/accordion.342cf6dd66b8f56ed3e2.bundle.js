@@ -1,4 +1,4 @@
-/*! elementor - v3.7.1 - 14-08-2022 */
+/*! elementor - v3.7.2 - 21-08-2022 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["accordion"],{
 

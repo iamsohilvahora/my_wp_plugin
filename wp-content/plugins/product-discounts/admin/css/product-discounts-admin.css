@@ -1,0 +1,13 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ 
+/* bulk action box */
+.tablenav {
+     clear: both;
+     height: 30px;
+     margin: 6px 0 15px;
+     padding-top: 5px;
+     vertical-align: middle;
+} 
