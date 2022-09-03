@@ -103,12 +103,14 @@ add_action('wp_ajax_nopriv_wp_dislike_button_ajax_action', 'wp_dislike_button_aj
 // Show like count for perticular post
 function wpac_show_like_count($content){
     if(is_single()){
-        global $wpdb;
-        $table_name = $wpdb->prefix . "likes_system";
-        $post_id = get_the_ID();
-        $like_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE post_id = '$post_id' AND like_count = 1" );
-        $like_count_result = "<center>This post has been liked <strong>".$like_count."</strong>, time(s)</center>";
-        $content .= $like_count_result;
+        if(get_post_type() == 'post'){
+            global $wpdb;
+            $table_name = $wpdb->prefix . "likes_system";
+            $post_id = get_the_ID();
+            $like_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE post_id = '$post_id' AND like_count = 1" );
+            $like_count_result = "<center>This post has been liked <strong>".$like_count."</strong>, time(s)</center>";
+            $content .= $like_count_result;
+        }
     }
     return $content;
 }

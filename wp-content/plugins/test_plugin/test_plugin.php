@@ -86,14 +86,13 @@ function test_plugin_setup_post_type(){
             require_once __DIR__ . '/admin/test_plugin-admin.php';
         }
     }
-
     register_setting('wporg_options', 'My_plugin_header_logo');
     add_shortcode('wporg', 'wporg_shortcode');
 } 
-add_action( 'init', 'test_plugin_setup_post_type' ); 
+add_action('init', 'test_plugin_setup_post_type'); 
 
 /*** Activate the plugin. */
-function test_plugin_activate() { 
+function test_plugin_activate(){ 
     // Trigger our function that registers the custom post type plugin.
     // test_plugin_setup_post_type(); 
     // Clear the permalinks after the post type has been registered.
@@ -102,7 +101,7 @@ function test_plugin_activate() {
 
     flush_rewrite_rules(); 
 }
-register_activation_hook( __FILE__, 'test_plugin_activate' );
+register_activation_hook(__FILE__, 'test_plugin_activate');
 
 /*** Deactivation hook. */
 function test_plugin_deactivate() {
@@ -111,12 +110,12 @@ function test_plugin_deactivate() {
     // Clear the permalinks to remove our post type's rules from the database.
     flush_rewrite_rules();
 }
-register_deactivation_hook( __FILE__, 'test_plugin_deactivate' );
+register_deactivation_hook(__FILE__, 'test_plugin_deactivate');
 
 register_uninstall_hook(__FILE__, 'test_plugin_function_to_run');
 
 //admin menu page
-function wporg_options_page() {
+function wporg_options_page(){
     add_menu_page(
         'WPOrg',
         'WPOrg Options',
@@ -126,7 +125,6 @@ function wporg_options_page() {
         'dashicons-admin-network',
         20
     );
-
     add_submenu_page(
         'tools.php',
         'WPOrg Options',
@@ -135,29 +133,23 @@ function wporg_options_page() {
         'wporg',
         'wporg_options_page_html'
     );
-
-
-
-
 }
-add_action( 'admin_menu', 'wporg_options_page' );
+add_action('admin_menu', 'wporg_options_page');
 
-function wporg_options_page_html() {
+function wporg_options_page_html(){
     ?>
     <div class="wrap">
       <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
       <form action="options.php" method="post">
         <?php
         // output security fields for the registered setting "wporg_options"
-        settings_fields( 'wporg_options');
+        settings_fields('wporg_options');
         // output setting sections and their fields
         // (sections are registered for "wporg", each field is registered to a specific section)
-        do_settings_sections( 'wporg' );
-
-        //update_option('My_plugin_header_logo','Logo');
-
+        do_settings_sections('wporg');
+        // update_option('My_plugin_header_logo','Logo');
         // output save settings button
-        submit_button( __( 'Save Settings', 'textdomain' ) );
+        submit_button(__('Save Settings', 'textdomain'));
         ?>
       </form>
     </div>
@@ -165,7 +157,7 @@ function wporg_options_page_html() {
 }
 
 //display shortcodes
-function wporg_shortcode( $atts = [], $content = null, $tag = '' ) {
+function wporg_shortcode($atts = [], $content = null, $tag = ''){
     $content = "The girls on the train";
     return $content;
 }
@@ -174,14 +166,12 @@ function wporg_shortcode( $atts = [], $content = null, $tag = '' ) {
 function wporg_settings_init() {
     // register a new setting for "reading" page
     register_setting('reading', 'wporg_setting_name');
- 
     // register a new section in the "reading" page
     add_settings_section(
         'wporg_settings_section',
         'WPOrg Settings Section', 'wporg_settings_section_callback',
         'reading'
     );
- 
     // register a new field in the "wporg_settings_section" section, inside the "reading" page
     add_settings_field(
         'wporg_settings_field',
@@ -189,9 +179,6 @@ function wporg_settings_init() {
         'reading',
         'wporg_settings_section'
     );
-
-
-
 }
  
 /**
@@ -214,7 +201,7 @@ function wporg_settings_field_callback() {
     $setting = get_option('wporg_setting_name');
     // output the field
     ?>
-    <input type="text" name="wporg_setting_name" value="<?php echo isset( $setting ) ? esc_attr( $setting ) : ''; ?>">
+    <input type="text" name="wporg_setting_name" value="<?php echo isset($setting) ? esc_attr($setting) : ''; ?>">
     <?php
 }
 
@@ -232,20 +219,20 @@ function add_custom_meta_box() {
 }
 
 function custom_meta_box_html( $post ) {
-    $value = get_post_meta( $post->ID, '_wporg_meta_key', true );
+    $value = get_post_meta($post->ID, '_wporg_meta_key', true);
     ?>
     <label for="wporg_field">Description for this field</label>
     <select name="wporg_field" id="wporg_field" class="postbox">
         <option value="">Select something...</option>
-        <option value="something" <?php selected( $value, 'something' ); ?>>Something</option>
-        <option value="else" <?php selected( $value, 'else' ); ?>>Else</option>
+        <option value="something" <?php selected($value, 'something'); ?>>Something</option>
+        <option value="else" <?php selected($value, 'else'); ?>>Else</option>
     </select>
     <?php
 }
-add_action( 'add_meta_boxes', 'add_custom_meta_box' );
+add_action('add_meta_boxes', 'add_custom_meta_box');
 
-function wporg_save_postdata( $post_id ) {
-    if ( array_key_exists( 'wporg_field', $_POST ) ) {
+function wporg_save_postdata($post_id){
+    if(array_key_exists('wporg_field', $_POST)){
         update_post_meta(
             $post_id,
             '_wporg_meta_key',
@@ -253,7 +240,7 @@ function wporg_save_postdata( $post_id ) {
         );
     }
 }
-add_action( 'save_post', 'wporg_save_postdata' );
+add_action('save_post', 'wporg_save_postdata');
 
 //User profile data update
 /**
@@ -261,7 +248,7 @@ add_action( 'save_post', 'wporg_save_postdata' );
  *
  * @param $user WP_User user object
  */
-function wporg_usermeta_form_field_birthday( $user )
+function wporg_usermeta_form_field_birthday($user)
 {
     ?>
     <h3>It's Your Birthday</h3>
@@ -275,7 +262,7 @@ function wporg_usermeta_form_field_birthday( $user )
                        class="regular-text ltr"
                        id="birthday"
                        name="birthday"
-                       value="<?= esc_attr( get_user_meta( $user->ID, 'birthday', true ) ) ?>"
+                       value="<?= esc_attr(get_user_meta($user->ID, 'birthday', true)) ?>"
                        title="Please use YYYY-MM-DD as the date format."
                        pattern="(19[0-9][0-9]|20[0-9][0-9])-(1[0-2]|0[1-9])-(3[01]|[21][0-9]|0[1-9])"
                        required>
@@ -295,13 +282,12 @@ function wporg_usermeta_form_field_birthday( $user )
  *
  * @return bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
-function wporg_usermeta_form_field_birthday_update( $user_id )
+function wporg_usermeta_form_field_birthday_update($user_id)
 {
     // check that the current user have the capability to edit the $user_id
-    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+    if(! current_user_can('edit_user', $user_id)){
         return false;
     }
-  
     // create/update user meta for the $user_id
     return update_user_meta(
         $user_id,
@@ -311,26 +297,14 @@ function wporg_usermeta_form_field_birthday_update( $user_id )
 }
   
 // Add the field to user's own profile editing screen.
-add_action(
-    'show_user_profile',
-    'wporg_usermeta_form_field_birthday'
-);
+add_action('show_user_profile', 'wporg_usermeta_form_field_birthday');
   
 // Add the field to user profile editing screen.
-add_action(
-    'edit_user_profile',
-    'wporg_usermeta_form_field_birthday'
-);
+add_action('edit_user_profile', 'wporg_usermeta_form_field_birthday');
   
 // Add the save action to user's own profile editing screen update.
-add_action(
-    'personal_options_update',
-    'wporg_usermeta_form_field_birthday_update'
-);
+add_action('personal_options_update', 'wporg_usermeta_form_field_birthday_update');
   
 // Add the save action to user profile editing screen update.
-add_action(
-    'edit_user_profile_update',
-    'wporg_usermeta_form_field_birthday_update'
-);
+add_action('edit_user_profile_update', 'wporg_usermeta_form_field_birthday_update');
 ?>

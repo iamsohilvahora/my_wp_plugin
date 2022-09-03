@@ -1,0 +1,6 @@
+2022-09-03T15:41:50+00:00 CRITICAL Cannot redeclare register_my_custom_menu_page() (previously declared in D:\wamp64\www\my_wp_plugin\wp-content\plugins\like-dislike-post\inc\settings.php:5) in D:\wamp64\www\my_wp_plugin\wp-content\plugins\contact-form-7-data\inc\settings.php on line 5
+
+2022-09-03T15:41:58+00:00 CRITICAL Cannot redeclare register_my_custom_menu_page() (previously declared in D:\wamp64\www\my_wp_plugin\wp-content\plugins\like-dislike-post\inc\settings.php:5) in D:\wamp64\www\my_wp_plugin\wp-content\plugins\contact-form-7-data\inc\settings.php on line 5
+
+2022-09-03T15:41:58+00:00 CRITICAL Cannot redeclare register_my_custom_menu_page() (previously declared in D:\wamp64\www\my_wp_plugin\wp-content\plugins\like-dislike-post\inc\settings.php:5) in D:\wamp64\www\my_wp_plugin\wp-content\plugins\contact-form-7-data\inc\settings.php on line 5
+
