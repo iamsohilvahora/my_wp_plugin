@@ -1,0 +1,11 @@
+article.post-news {
+    max-width: 960px;
+    margin: auto;
+}
+.post-news h2{
+	color:red;
+}
+nav.next_previous {
+    display: flex;
+    justify-content: space-around;
+}
