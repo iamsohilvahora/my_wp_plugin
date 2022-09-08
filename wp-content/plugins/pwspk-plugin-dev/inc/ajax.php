@@ -16,7 +16,6 @@ function pwspk_ajax_action(){
 
 function pwspk_my_front_ajax_action(){
 	if(isset($_POST['action']) && isset($_POST['value'])){
-		
 		echo absint($_POST['value']) + 10;
 	}else{
 		echo "Error getting Field";

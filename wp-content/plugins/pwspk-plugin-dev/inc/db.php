@@ -1,6 +1,5 @@
 <?php 
 defined('ABSPATH') || die('Nice Try');
-
 register_activation_hook(PLUGIN_FILE, function(){
 	global $wpdb;
 	$prefix = $wpdb->prefix;
@@ -30,14 +29,10 @@ register_activation_hook(PLUGIN_FILE, function(){
 	);
 	$wpdb->insert($table, $data);
 });
-
 register_deactivation_hook(PLUGIN_FILE, function(){
-		global $wpdb;
+	global $wpdb;
 	$prefix = $wpdb->prefix;
 	$table = $prefix."likesdislikes";
 	$sql = "TRUNCATE TABLE `{$table}`;";
 	$wpdb->query($sql);
 });
-
-
-

@@ -13,6 +13,6 @@ class pwspkBlocks{
 			'editor_style' => 'pwspk-admin-style',
 			'editor_script' => 'pwspk-blocks-script'
 		);
-		register_block_type($name, $args );
+		register_block_type($name, $args);
 	}
 } new pwspkBlocks;
