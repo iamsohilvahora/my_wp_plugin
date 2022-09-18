@@ -15,21 +15,18 @@
             else{
                 $this->items = $this->wp_list_table_data();
             }
-
             $this->_column_headers = array( 
                  $this->get_columns(),       // columns
                  array(),           // hidden
                  $this->get_sortable_columns(),  // sortable
             );
             $this->process_bulk_action(); // action for delete data
-
             /* pagination */
             // $per_page = $this->get_items_per_page('items_per_page', 2);
             $per_page = $this->get_items_per_page('items_per_page', 3);
             $current_page = $this->get_pagenum();
             $total_items = count($this->items);
             $this->items = array_slice($this->items, (($current_page - 1) * $per_page), $per_page);
-
             $this->set_pagination_args(array(
                   'total_items' => $total_items, // total number of items
                   'per_page'    => $per_page // items to show on a page
@@ -48,7 +45,6 @@
                 <a href="<?php echo admin_url('admin.php?page=product_discounts&action=add'); ?>" class="page-title-action" id="product-discounts-save">Add New</a>
                 <hr class="wp-header-end">
             </div>
-
             <?php 
             if($_GET['page'] == "product_discounts"):
                 global $wpdb;
@@ -56,7 +52,6 @@
                 $perpage = 10;
                 $curpage = isset($_GET['pagenum']) ? intval($_GET['pagenum']) : 1;
                 $product_discounts = $wpdb->get_results("SELECT * FROM $table_name");
-
                 $total = $wpdb->get_var("SELECT COUNT(*) FROM $table_name");
                 $pages = ceil($total/$perpage);
                 $limit = 10;
@@ -74,7 +69,6 @@
                 else{
                     $product_discounts = $wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC LIMIT $limit OFFSET $offset");
                 }
-
                 $id = 1;
                 if(!empty($product_discounts)):
                     $posts_array = array();
@@ -85,10 +79,8 @@
                         $discount_name = $discount->discount_name; 
                         $discount_value = $discount->discount_value; 
                         // get admin page url
-                        $admin_url = admin_url('admin.php?page=product_discounts&action=edit&edit_id='.$discount->id.'');
-                        
+                        $admin_url = admin_url('admin.php?page=product_discounts&action=edit&edit_id='.$discount->id.'');     
                         $action = "<a href='".$admin_url."' class='btn btn-success mx-1 text-light edit-discount'>Edit</a><a href='javascript:void(0);'' class='btn btn-danger mx-1 text-light delete-discount' data-id='".$discount->id."'>Delete</a>";
-
                         $posts_array[] = array(
                                 "id" => $table_id,
                                 "sr" => $id++,
@@ -153,7 +145,6 @@
             // Detect when a bulk action is being triggered...
             global $wpdb;
             $table_name = $wpdb->prefix."product_discounts";
-
             if('delete' === $this->current_action()){
                 $ids = isset($_REQUEST['record']) ? $_REQUEST['record'] : array();
                 if(is_array($ids)) $ids = implode(',', $ids);
@@ -173,7 +164,6 @@
                 'edit'      => sprintf('<a href="?page=%s&action=%s&edit_id=%s">Edit</a>',$_REQUEST['page'],'edit',$item['id']),
                 'delete'    => sprintf('<a href="javascript:void(0);" class="delete-discount" data-id="%s">Delete</a>',$item['id']),
             );
-            
             // Return the title contents
             return sprintf('%1$s %2$s',
                 /*$1%s*/ $item['discount_name'],
@@ -203,7 +193,6 @@
                     // query for get all product discount details
                     $product_discounts = $wpdb->get_results("SELECT discount_name, discount_value FROM $table_name ORDER BY id DESC LIMIT $limit OFFSET $offset");
                 }
-
                 if(!empty($product_discounts)):
                     // Display pagination 
                     $pagin = array();

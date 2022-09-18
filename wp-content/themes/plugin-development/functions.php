@@ -144,6 +144,9 @@ function plugin_development_scripts() {
 
 	wp_enqueue_script( 'plugin-development-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	wp_enqueue_script( 'plugin-development-custom', get_template_directory_uri() . '/js/custom.js', array(), _S_VERSION, true );
+	// wp_localize_script( 'plugin-development-custom', 'post_list_admin_URL_NAME', array('ajaxurl' => admin_url( 'admin-ajax.php' )));
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -214,3 +217,13 @@ require get_template_directory(). '/inc/custom-navigation.php';
  * customization of user
  */
 require get_template_directory(). '/inc/custom-user.php';
+
+/**
+ * Custom block
+ */
+require get_template_directory(). '/inc/custom-block.php';
+
+/**
+ * load filter and action hook's function
+ */
+require get_template_directory(). '/inc/common-functions.php';

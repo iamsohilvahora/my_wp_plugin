@@ -1,0 +1,96 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+/* General */
+.wp_cbf-metaboxes fieldset{
+	min-height:32px;
+}
+input[type=url]{
+    margin: 0 0 12px;
+}
+
+
+/* Images */
+.retina-js, .new-images-size{
+	margin-top:12px;
+	margin-left:20px;
+}
+
+.existing-images-size{
+	margin:0 0 12px 24px;
+}
+.existing-images-size h4{
+	float:left;
+	margin-right:32px;
+}
+.existing-images-size input[type="number"]{
+	margin:12px 0 6px;
+}
+
+/* Admin */
+p.updated {
+    background: #fff;
+    border-left: 4px solid #7ad03a;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    margin: 5px 0 2px;
+    padding: 1px 12px;
+}
+
+.smtp-results-debug pre{
+    background:#fff;
+    padding:2%;
+    white-space: pre-wrap;
+}
+
+.field-container{
+    margin-bottom:24px;
+}
+.field-container label{
+    display:block;
+    font-weight:700;
+}
+
+input.short{
+    border-color: #e35b5b;
+}
+
+.wp_cbf-admin-colors{
+	line-height: 34px;
+	padding: 6px 0;
+}
+
+.wp_cbf-upload-preview{
+	min-height:100px;
+	position:relative;
+}
+.wp_cbf-upload-preview img{
+	max-width:150px;
+	height:auto;
+}
+.wp_cbf-delete-image{
+	position: absolute;
+	top: 0;
+	width: 24px;
+	height: 24px;
+	background: #222;
+        color:#fff;
+	text-align: center;
+        border: 2px solid #fff;
+	border-radius: 50%;
+	line-height: 10px;
+        padding:0;
+	cursor: pointer;
+        box-shadow: 0 0 2px -1px #222;
+}
+
+ .wp_cbf-admin-menu-items{
+    margin-bottom:32px;
+    line-height:24px;
+  }
+ .wp_cbf-admin-menu-items h4{
+    margin-bottom:6px;
+  }
+

@@ -32,7 +32,7 @@ function pwspk_custom_the_post($post){
 			<style>
 				article#post-<?php echo $post->ID; ?>{
 					background-color: <?php echo $_mymetabox; ?>;
-					color: #fff;
+					color: #000;
 				}
 			</style>
 		<?php

@@ -13,7 +13,8 @@
  */
 
 if($discount = get_post_meta(get_the_id(), '_product_discounts', true)){
-    echo "product discount is: ".$discount. "%";
+    echo "<br /><br />";
+    echo "<b>The product discount</b> is: ".$discount. "%";
 }
 ?>
 

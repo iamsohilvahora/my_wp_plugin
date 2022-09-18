@@ -208,7 +208,7 @@ class Product_Discounts {
 		$plugin_public = new Product_Discounts_Public( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles'); // load css
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts'); // load js
-		$this->loader->add_action('woocommerce_after_add_to_cart_form', $plugin_public, 'wc_show_product_discount_func'); // show content after add to cart button on single product detail page
+		$this->loader->add_action('woocommerce_single_product_summary', $plugin_public, 'wc_show_product_discount_func', 32); // show content after add to cart button on single product detail page
 	}
 
 	/**

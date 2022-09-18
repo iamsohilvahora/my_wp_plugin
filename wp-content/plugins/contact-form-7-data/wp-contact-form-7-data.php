@@ -14,27 +14,21 @@
      * Text Domain:       wp-contact-form-7-plugin
      * Domain Path:       /languages
      */
-
     if(!defined('ABSPATH')){
         die();
     }
-
     //If this file called directly, abort
     if(!defined('WPINC')){
         die();
     }
-
     if(!defined('MY_PLUGIN_VERSION')){
         define('MY_PLUGIN_VERSION', '1.0.0');
     }
-
-    if(!defined('PLUGIN_DIR_PATH')){
-        define('PLUGIN_DIR_PATH', plugin_dir_url(__FILE__));
+    if(!defined('CONTACT_FORM_7_PLUGIN_DIR_PATH')){
+        define('CONTACT_FORM_7_PLUGIN_DIR_PATH', plugin_dir_url(__FILE__));
     }
-
     // Database file
     require plugin_dir_path(__FILE__) .'/inc/db.php';
-
     // Call the function (wp_contact_form_7_table) in database file when plugin is activated
     register_activation_hook( __FILE__, 'wp_contact_form_7_table');
 
