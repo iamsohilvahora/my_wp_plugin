@@ -227,3 +227,20 @@ require get_template_directory(). '/inc/custom-block.php';
  * load filter and action hook's function
  */
 require get_template_directory(). '/inc/common-functions.php';
+
+/**
+ * Custom elementor widget.
+ */
+function wp_load_elementor_pdf_widget_func(){
+    if(did_action('elementor/loaded')){
+        require(get_template_directory() . '/inc/elementor_slider_pdf_widget.php'); // get slider pdf widget
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new ElementorSliderPdfWidget());
+    }
+}
+add_action('init', 'wp_load_elementor_pdf_widget_func');
+
+function register_new_controls($controls_manager){
+    require(get_template_directory() . '/inc/fileselect-control.php'); // get pdf control
+    $controls_manager->register_control('file-select', new \FileSelect_Control()); // add pdf control
+}
+add_action('elementor/controls/controls_registered', 'register_new_controls');

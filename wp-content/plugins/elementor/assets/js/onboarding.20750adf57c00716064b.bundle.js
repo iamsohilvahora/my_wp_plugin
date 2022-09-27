@@ -1,4 +1,4 @@
-/*! elementor - v3.7.2 - 21-08-2022 */
+/*! elementor - v3.7.7 - 20-09-2022 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["onboarding"],{
 
@@ -847,9 +847,9 @@ function Layout(props) {
   if (!state.hasPro) {
     headerButtons.push({
       id: 'go-pro',
-      text: __('Go Pro', 'elementor-pro'),
+      text: __('Upgrade', 'elementor'),
       hideText: false,
-      icon: 'eicon-pro-icon',
+      className: 'eps-button__go-pro-btn',
       url: 'https://elementor.com/pro/?utm_source=onboarding-wizard&utm_campaign=gopro&utm_medium=wp-dash&utm_content=top-bar&utm_term=' + elementorAppConfig.onboarding.onboardingVersion,
       target: '_blank',
       elRef: goProButtonRef,
@@ -2663,4 +2663,4 @@ Connect.propTypes = {
 /***/ })
 
 }]);
-//# sourceMappingURL=onboarding.2587478fd17618c984e9.bundle.js.map
+//# sourceMappingURL=onboarding.20750adf57c00716064b.bundle.js.map

@@ -1,4 +1,4 @@
-/*! elementor - v3.7.2 - 21-08-2022 */
+/*! elementor - v3.7.7 - 20-09-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -35,7 +35,9 @@ var LockPro = /*#__PURE__*/function () {
           form = _this$elements.form,
           templateType = _this$elements.templateType;
       form.addEventListener('submit', this.onFormSubmit.bind(this));
-      templateType.addEventListener('change', this.onTemplateTypeChange.bind(this));
+      templateType.addEventListener('change', this.onTemplateTypeChange.bind(this)); // Force checking on render, to make sure that default values are also checked.
+
+      this.onTemplateTypeChange();
     }
   }, {
     key: "onFormSubmit",

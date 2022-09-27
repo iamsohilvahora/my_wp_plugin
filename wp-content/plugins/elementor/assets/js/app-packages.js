@@ -1,4 +1,4 @@
-/*! elementor - v3.7.2 - 21-08-2022 */
+/*! elementor - v3.7.7 - 20-09-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -6428,9 +6428,11 @@ var _templateTypes = _interopRequireDefault(__webpack_require__(/*! ../context/t
 __webpack_require__(/*! ./site-editor.scss */ "../core/app/modules/site-editor/assets/js/templates/site-editor.scss");
 
 function Layout(props) {
+  var _props$titleRedirectR;
+
   var config = {
     title: __('Theme Builder', 'elementor'),
-    titleRedirectRoute: '/site-editor',
+    titleRedirectRoute: (_props$titleRedirectR = props.titleRedirectRoute) !== null && _props$titleRedirectR !== void 0 ? _props$titleRedirectR : null,
     headerButtons: props.headerButtons,
     sidebar: /*#__PURE__*/_react.default.createElement(_menu.default, {
       allPartsButton: props.allPartsButton,
@@ -6445,7 +6447,8 @@ Layout.propTypes = {
   headerButtons: PropTypes.arrayOf(PropTypes.object),
   allPartsButton: PropTypes.element.isRequired,
   children: PropTypes.object.isRequired,
-  promotion: PropTypes.bool
+  promotion: PropTypes.bool,
+  titleRedirectRoute: PropTypes.string
 };
 Layout.defaultProps = {
   headerButtons: []
